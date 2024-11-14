@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Stories</title>
+    <link rel="stylesheet" href="stories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!-- Icon Navigation Bar -->
+<nav class="icon-bar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="donate.html"><i class="fas fa-hand-holding-heart"></i> Donate</a>
+    <a href="stories.html"><i class="fas fa-book-open"></i> Stories</a>
+    <a href="community.html"><i class="fas fa-comments"></i> Community</a>
+    <a href="volunteer.html"><i class="fas fa-hands-helping"></i> Volunteer</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://chat.whatsapp.com/HguQWz2vYyhDdjcC6NEToy" target="_blank" class="whatsapp-link">
+        <i class="fab fa-whatsapp"></i>WhatsApp</a>
+    <a href="admin_dashboard.html"><i class="fas fa-user-shield"></i> Admin</a>
+</nav>
+
+
+<!-- Stories Section -->
+<section class="stories-section">
+    <h1>Impact Stories</h1>
+    <div id="storiesContainer" class="stories-container"></div>
+</section>
+
+<!-- JavaScript to Load Stories from LocalStorage -->
+<script>
+    // Function to load and display stories from localStorage
+    function loadStories() {
+        const storiesContainer = document.getElementById("storiesContainer");
+        storiesContainer.innerHTML = ""; // Clear previous content
+
+        const stories = JSON.parse(localStorage.getItem("stories")) || [];
+        
+        if (stories.length === 0) {
+            storiesContainer.innerHTML = "<p>No stories have been uploaded yet.</p>";
+        } else {
+            stories.forEach(story => {
+                const storyElement = document.createElement("div");
+                storyElement.classList.add("story");
+
+                // Check if media is an image or video based on its MIME type
+                let mediaElement;
+                if (story.mediaType.startsWith("image")) {
+                    mediaElement = `<img src="${story.media}" alt="${story.title}" class="story-media">`;
+                } else if (story.mediaType.startsWith("video")) {
+                    mediaElement = `<video controls class="story-media"><source src="${story.media}" type="${story.mediaType}">Your browser does not support the video tag.</video>`;
+                } else {
+                    mediaElement = `<p>Unsupported media type</p>`;
+                }
+
+                storyElement.innerHTML = `
+                    <h2>${story.title}</h2>
+                    <p>${story.description}</p>
+                    ${mediaElement}
+                `;
+                storiesContainer.appendChild(storyElement);
+            });
+        }
+    }
+
+    // Load stories when the page loads
+    window.onload = loadStories;
+</script>
+
+</body>
+</html>

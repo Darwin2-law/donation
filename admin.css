@@ -1,0 +1,82 @@
+/* Admin Page Styling */
+.admin-section {
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.admin-section h1 {
+    font-size: 2.4em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.admin-panel {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Icon Bar */
+.icon-bar {
+    background-color:yellow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.icon-bar a {
+    color: green;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.admin-panel h2 {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.admin-panel button,
+.admin-panel input[type="text"],
+.admin-panel input[type="file"],
+.admin-panel textarea {
+    font-size: 1em;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.admin-panel button {
+    background-color: #ff6347;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-panel button:hover {
+    background-color: #ff4500;
+}
+
+.message {
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
